@@ -1,0 +1,26 @@
+fileFormatVersion: 2
+guid: 83d3b9ad664e8244c939c5cf22c9469d
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences:
+  - currStrength: {instanceID: 0}
+  - currSpeed: {instanceID: 0}
+  - currHealth: {instanceID: 0}
+  - currStamina: {instanceID: 0}
+  - currDefence: {instanceID: 0}
+  - playerName: {instanceID: 0}
+  - remainingPoints: {instanceID: 0}
+  - addStr: {instanceID: 0}
+  - lowerStr: {instanceID: 0}
+  - addSpd: {instanceID: 0}
+  - lowerSpd: {instanceID: 0}
+  - addHealth: {instanceID: 0}
+  - lowerHealth: {instanceID: 0}
+  - addStam: {instanceID: 0}
+  - lowerStam: {instanceID: 0}
+  - addDef: {instanceID: 0}
+  - lowerDef: {instanceID: 0}
+  - stats: {fileID: 157954, guid: 84024b1343d6e9d4e9fd2ada3f7f52c2, type: 2}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
