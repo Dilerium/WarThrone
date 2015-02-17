@@ -3,6 +3,8 @@ using System.Collections;
 using System;
 using UnityEngine.UI;
 
+[RequireComponent(typeof(CharacterController))] ///// REQUIRE
+
 public class GuiGenerator : MonoBehaviour 
 {
 	private Player char1;
@@ -27,8 +29,19 @@ public class GuiGenerator : MonoBehaviour
 	private Button lowerDef;
 	private GameObject stats;
 	// Use this for initialization
+
+    Inventory inventoryScript; //instantiate ///// REQUIRE
+    GameObject inventory; ///// REQUIRE
+    bool showInventory = false; ///// REQUIRE
+
+
 	void Start () 
 	{
+
+        inventory = GameObject.FindGameObjectWithTag("Canvas");///// REQUIRE
+        inventoryScript = GameObject.FindGameObjectWithTag("Inventory").GetComponent<Inventory>(); ///// REQUIRE
+        inventory.SetActive(false);///// REQUIRE
+
 		char1 = new Player ("Person");
 		char1.addStats (STARTING_POINTS);
 		stats = GameObject.FindGameObjectWithTag ("Stats");
@@ -49,6 +62,34 @@ public class GuiGenerator : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
 	{
+
+        if (Input.GetKeyDown("i")) // activate inventory
+        {
+            showInventory = !showInventory;
+            inventory.SetActive(showInventory);
+
+        }
+
+        //important for project part, when i click to item
+        if (Input.GetMouseButtonDown(0))
+        {
+            RaycastHit hit;
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            if (Physics.Raycast(ray, out hit))
+            {
+                float distance = Vector3.Distance(hit.transform.position, this.transform.position);
+                //Debug.Log(distance);
+
+                if (hit.transform.tag == "Item" && distance <= 3)
+                {
+                    //Debug.Log("hit");
+                    inventoryScript.addExistingItem(hit.transform.GetComponent<DroppedItem>().item);
+                    Destroy(hit.transform.gameObject);
+
+                }///// REQUIRE
+            }///// REQUIRE
+        }///// REQUIRE
+
 		if (Input.GetKey(KeyCode.C))
 		{
 			show = !show;
