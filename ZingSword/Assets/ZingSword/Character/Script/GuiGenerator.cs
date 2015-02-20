@@ -7,7 +7,7 @@ using UnityEngine.UI;
 
 public class GuiGenerator : MonoBehaviour 
 {
-	private Player char1;
+	public Player char1;
 	private const int STARTING_POINTS = 50;
 	private bool show = false;
 	public Text currStrength;
@@ -37,37 +37,22 @@ public class GuiGenerator : MonoBehaviour
 
 	void Start () 
 	{
-
         inventory = GameObject.FindGameObjectWithTag("Canvas");///// REQUIRE
         inventoryScript = GameObject.FindGameObjectWithTag("Inventory").GetComponent<Inventory>(); ///// REQUIRE
         inventory.SetActive(false);///// REQUIRE
 
-		char1 = new Player ("Person");
 		char1.addStats (STARTING_POINTS);
 		stats = GameObject.FindGameObjectWithTag ("Stats");
 		stats.SetActive (false);
-		addStr = (Button) GameObject.FindGameObjectWithTag ("addStr").GetComponent<Button> ();
-		addStr.enabled = false;
-		/*lowerStr.SetActive (false);
-		addSpd.SetActive (false);
-		lowerSpd.SetActive (false);
-		addHealth.SetActive (false);
-		lowerHealth.SetActive (false);
-		addStam.SetActive (false);
-		lowerStam.SetActive (false);
-		addDef.SetActive (false);
-		lowerDef.SetActive (false);*/
 	}
 
 	// Update is called once per frame
 	void Update ()
 	{
-
         if (Input.GetKeyDown("i")) // activate inventory
         {
             showInventory = !showInventory;
             inventory.SetActive(showInventory);
-
         }
 
         //important for project part, when i click to item
@@ -90,34 +75,53 @@ public class GuiGenerator : MonoBehaviour
             }///// REQUIRE
         }///// REQUIRE
 
-		if (Input.GetKey(KeyCode.C))
+		if (Input.GetKeyDown("c"))
 		{
 			show = !show;
 			stats.SetActive(show);
 		}
+
 		if (show)
 		{
-			/*if(char1.getStats () > 0)
+			foreach (Button btn in GameObject.FindGameObjectWithTag("Stats").GetComponentsInChildren<Button>())
 			{
-				addStr.interactable = true;
-				lowerStr.interactable = true;
-				addSpd.interactable = true;
-				lowerSpd.interactable = true;
-				addHealth.interactable = true;
-				lowerHealth.interactable = true;
-				addStam.interactable = true;
-				lowerStam.interactable = true;
-				addDef.interactable = true;
-				lowerDef.interactable = true;
-			}*/
+				btn.enabled = true;
+			}
 			playerName.text = char1.getName ();
 			remainingPoints.text = char1.getStats ().ToString ();
+			if(char1.getStats () < 1)
+			{
+				GameObject.FindGameObjectWithTag ("addStr").GetComponent<Button>().enabled = false;
+				GameObject.FindGameObjectWithTag ("addSpd").GetComponent<Button>().enabled = false;
+				GameObject.FindGameObjectWithTag ("addHealth").GetComponent<Button>().enabled = false;
+				GameObject.FindGameObjectWithTag ("addStam").GetComponent<Button>().enabled = false;
+				GameObject.FindGameObjectWithTag ("addDef").GetComponent<Button>().enabled = false;
+			}
 			currStrength.text = char1.getStrength ().ToString ();
+			if(char1.getStrength() < 1)
+			{
+				GameObject.FindGameObjectWithTag("lowerStr").GetComponent<Button>().enabled = false;
+			}
 			currSpeed.text = char1.getSpeed().ToString ();
+			if(char1.getSpeed() < 1)
+			{
+				GameObject.FindGameObjectWithTag("lowerSpd").GetComponent<Button>().enabled = false;
+			}
 			currHealth.text = char1.getHealth().ToString ();
+			if(char1.getHealth () < 1)
+			{
+				GameObject.FindGameObjectWithTag("lowerHealth").GetComponent<Button>().enabled = false;
+			}
 			currStamina.text = char1.getStamina().ToString ();
+			if(char1.getStamina() < 1)
+			{
+				GameObject.FindGameObjectWithTag("lowerStam").GetComponent<Button>().enabled = false;
+			}
 			currDefence.text = char1.getDefence().ToString ();
-			GameObject.FindGameObjectWithTag ("addStr").GetComponent<Button>().enabled = true;
+			if(char1.getDefence() < 1)
+			{
+				GameObject.FindGameObjectWithTag("lowerDef").GetComponent<Button>().enabled = false;
+			}
 		}
 	}
 

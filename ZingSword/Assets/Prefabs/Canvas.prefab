@@ -218,7 +218,6 @@ GameObject:
   - 223: {fileID: 22302720}
   - 114: {fileID: 11402660}
   - 114: {fileID: 11402662}
-  - 222: {fileID: 22202720}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: UI
@@ -2297,12 +2296,6 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 102720}
---- !u!222 &22202720
-CanvasRenderer:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 102678}
 --- !u!223 &22302720
 Canvas:
   m_ObjectHideFlags: 1
@@ -2311,7 +2304,7 @@ Canvas:
   m_GameObject: {fileID: 102678}
   m_Enabled: 1
   serializedVersion: 2
-  m_RenderMode: 1
+  m_RenderMode: 0
   m_Camera: {fileID: 0}
   m_PlaneDistance: 1
   m_PixelPerfect: 1

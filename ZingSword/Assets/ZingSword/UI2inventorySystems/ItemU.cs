@@ -27,9 +27,7 @@ public class ItemU {
         Armore,
         Rings,
         Necklace,
-        Chests,
-        None
-
+		None
     }
 
     public ItemU(string name, int id, string desc, int speed, int power, int value, ItemType type)

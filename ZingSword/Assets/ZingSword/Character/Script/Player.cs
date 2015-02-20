@@ -95,7 +95,7 @@ public class Player : MonoBehaviour
 		return this.Attributes;
 	}
 	
-	public void setAttributes(int pointChange)
+	public void addAttributes(int pointChange)
 	{
 		this.statPoints += pointChange;
 	}
@@ -131,6 +131,7 @@ public class Player : MonoBehaviour
 	{
 		this.strength += gain;
 		this.attack = (strength * 4);
+		this.statPoints -= gain;
 	}
 
 	public int getStrength()
@@ -151,6 +152,7 @@ public class Player : MonoBehaviour
 	public void setSpeed(int gain)
 	{
 		this.speed += gain;
+		this.statPoints -= gain;
 	}
 
 	public int getSpeed()
@@ -163,6 +165,7 @@ public class Player : MonoBehaviour
 		this.health += gain;
 		this.maxHealth = (health * 8);
 		this.currHealth = this.maxHealth;
+		this.statPoints -= gain;
 	}
 
 	public int getHealth()
@@ -184,6 +187,7 @@ public class Player : MonoBehaviour
 	{
 		this.defence += gain;
 		this.armour = (int)(defence * 3);
+		this.statPoints -= gain;
 	}
 
 	public int getDefence()
@@ -204,6 +208,7 @@ public class Player : MonoBehaviour
 	public void setStamina(int gain)
 	{
 		this.stamina += gain;
+		this.statPoints -= gain;
 	}
 
 	public int getStamina()
@@ -235,7 +240,7 @@ public class Player : MonoBehaviour
 	public void levelUp()
 	{
 		this.level += 1;
-		this.setAttributes (5);
+		this.addAttributes (5);
 		this.maxExp = (int) (maxExp * 1.15); //Had a problem with a cast missing exception when using "maxExp *= 1.15;"
 	}
 
