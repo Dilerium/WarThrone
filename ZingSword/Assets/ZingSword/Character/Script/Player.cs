@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 using System;
 
 public class Player : MonoBehaviour
@@ -8,9 +9,12 @@ public class Player : MonoBehaviour
 	private string primaryAttribute;
 	private int strength;
 	private int speed;
+    //healt defs
 	private int health;
+    public Scrollbar HealthBar;
 	private int currHealth;
 	private int maxHealth;
+    //end of health defs
 	private int stamina;
 	private int defence;
 	private int level; 
@@ -57,7 +61,7 @@ public class Player : MonoBehaviour
 		this.charName = name;
 		this.strength = 5;
 		this.speed = 5;
-		this.health = 5;
+		this.health = 100; //Health Bar
 		this.stamina = 5;
 		this.defence = 5;
 		this.level = 1;
@@ -71,7 +75,7 @@ public class Player : MonoBehaviour
 		this.charName = name;
 		this.strength = strength;
 		this.speed = speed;
-		this.health = health;
+		this.health = health;// Health in float
 		this.stamina = stamina;
 		this.defence = defence;
 		this.level = level;
@@ -248,7 +252,9 @@ public class Player : MonoBehaviour
 	{
 		int dealtDamage = (armour - damage);
 		this.currHealth -= (dealtDamage > 0) ? dealtDamage : 1;
+        this.HealthBar.size = health / 100f;
 		if(this.currHealth <= 0) {  this.dying = true; }
+
 	}
 
 	// Use this for initialization
