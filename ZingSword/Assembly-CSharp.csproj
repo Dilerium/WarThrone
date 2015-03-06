@@ -52,6 +52,7 @@
      <Compile Include="Assets\ZingSword\Enemies\Mobs\MobScripts\Mob.cs" />
      <Compile Include="Assets\ZingSword\Scriptings\ClickToMoveCharControll.cs" />
      <Compile Include="Assets\ZingSword\Scriptings\Item.cs" />
+     <Compile Include="Assets\ZingSword\Scriptings\minipMapScript.cs" />
      <Compile Include="Assets\ZingSword\UI2inventorySystems\Inventory.cs" />
      <Compile Include="Assets\ZingSword\UI2inventorySystems\ItemDatabase.cs" />
      <Compile Include="Assets\ZingSword\UI2inventorySystems\ItemU.cs" />
