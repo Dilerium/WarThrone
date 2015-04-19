@@ -46,6 +46,39 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Examples\Minimap\Scripts\SimpleMovement.cs" />
+     <Compile Include="Assets\Scripts\Minimap\Core\MActor.cs" />
+     <Compile Include="Assets\Scripts\Minimap\Core\MController.cs" />
+     <Compile Include="Assets\Scripts\Minimap\Core\MMapBase.cs" />
+     <Compile Include="Assets\Scripts\Minimap\Core\MModel.cs" />
+     <Compile Include="Assets\Scripts\Minimap\Core\MModelWActors.cs" />
+     <Compile Include="Assets\Scripts\Minimap\Core\MOrientation.cs" />
+     <Compile Include="Assets\Scripts\Minimap\Core\MUpdateIn.cs" />
+     <Compile Include="Assets\Scripts\Minimap\Core\MView.cs" />
+     <Compile Include="Assets\Scripts\Minimap\Core\MViewRT.cs" />
+     <Compile Include="Assets\Scripts\Minimap\Core\MViewRaster.cs" />
+     <Compile Include="Assets\Scripts\Minimap\Interaction\MCreateMark.cs" />
+     <Compile Include="Assets\Scripts\Minimap\Interaction\MEventSystem.cs" />
+     <Compile Include="Assets\Scripts\Minimap\Interaction\MInteractionEvent.cs" />
+     <Compile Include="Assets\Scripts\Minimap\Interaction\MInteractionType.cs" />
+     <Compile Include="Assets\Scripts\Minimap\Objects\MArrowCircular.cs" />
+     <Compile Include="Assets\Scripts\Minimap\Objects\MMarkCircle.cs" />
+     <Compile Include="Assets\Scripts\Minimap\Objects\MObjRotateActor.cs" />
+     <Compile Include="Assets\Scripts\Minimap\Objects\MObjRotateFreeze.cs" />
+     <Compile Include="Assets\Scripts\Minimap\Objects\MObjScale.cs" />
+     <Compile Include="Assets\Scripts\Minimap\Objects\MObjTranslate.cs" />
+     <Compile Include="Assets\Scripts\Minimap\Objects\MObject.cs" />
+     <Compile Include="Assets\Scripts\Minimap\Objects\MPin.cs" />
+     <Compile Include="Assets\Scripts\Minimap\Util\FreezeRotation.cs" />
+     <Compile Include="Assets\Scripts\Minimap\Util\HUDFPS.cs" />
+     <Compile Include="Assets\Scripts\Minimap\Util\MClassDescription.cs" />
+     <Compile Include="Assets\Scripts\Minimap\Util\MDynamicRT.cs" />
+     <Compile Include="Assets\Scripts\Minimap\Util\MMapSnapshot.cs" />
+     <Compile Include="Assets\Scripts\Minimap\Util\MMapTools.cs" />
+     <Compile Include="Assets\Scripts\Minimap\Util\MPaths.cs" />
+     <Compile Include="Assets\Scripts\Minimap\Util\MSettings.cs" />
+     <Compile Include="Assets\Scripts\Minimap\Util\MUtil.cs" />
+     <Compile Include="Assets\Scripts\Minimap\Util\ScriptableSingleton.cs" />
      <Compile Include="Assets\ZingSword\Character\Script\Combat.cs" />
      <Compile Include="Assets\ZingSword\Character\Script\GuiGenerator.cs" />
      <Compile Include="Assets\ZingSword\Character\Script\Player.cs" />
@@ -68,9 +101,11 @@
      <None Include="Assets\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\_BloomAndFlares\BlendOneOne.shader" />
      <None Include="Assets\Standard Assets (Mobile)\Shaders\Particle Shaders\Mobile Multiply Culled.shader" />
      <None Include="Assets\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\NoiseEffectShaderRGB.shader" />
+     <None Include="Assets\Sources.txt" />
      <None Include="Assets\Standard Assets\Toon Shading\Sources\Shaders\Toony-Basic.shader" />
      <None Include="Assets\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\_DepthOfField\SeparableWeightedBlurDof34.shader" />
      <None Include="Assets\Standard Assets (Mobile)\Shaders\Miscellaneous Shaders\Mobile Background.shader" />
+     <None Include="Assets\ChangeLog.txt" />
      <None Include="Assets\Standard Assets\Projectors\Sources\Shaders\Projector Multiply.shader" />
      <None Include="Assets\Standard Assets (Mobile)\Shaders\Vertex Colored Shaders\Mobile Transparent Vertex Color.shader" />
      <None Include="Assets\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\ShowAlphaChannel.shader" />
@@ -156,6 +191,7 @@
      <None Include="Assets\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\SimpleClear.shader" />
      <None Include="Assets\Standard Assets\Tessellation Shaders\BumpedSpecularDisplacement.shader" />
      <None Include="Assets\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\_Antialiasing\FXAA3Console.shader" />
+     <None Include="Assets\ReadMe.txt" />
      <None Include="Assets\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\_Antialiasing\FXAAPreset2.shader" />
      <None Include="Assets\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\_BloomAndFlares\BlurAndFlares.shader" />
      <None Include="Assets\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\_BloomAndFlares\BlendForBloom.shader" />
