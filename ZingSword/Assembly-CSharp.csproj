@@ -46,6 +46,7 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\EnemySpawn.cs" />
      <Compile Include="Assets\Examples\Minimap\Scripts\SimpleMovement.cs" />
      <Compile Include="Assets\Scripts\Minimap\Core\MActor.cs" />
      <Compile Include="Assets\Scripts\Minimap\Core\MController.cs" />
