@@ -86,13 +86,10 @@ public class Inventory : MonoBehaviour {
                 Slotamount++;
             }
         }
-        addItem(1);
         addItem(0);
+        addItem(1);        
         addItem(2);        
-        addItem(5);
-        addItem(5);
-        addItem(5);
-        addItem(5);
+
 	}
 
     public void checkIfItemExist(int itemID, ItemU item)

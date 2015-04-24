@@ -10,7 +10,11 @@ public class ItemDatabase : MonoBehaviour {
 	void Start () 
     {
         items.Add(new ItemU("sword01", 0, "Gold Sword", 10, 10, 1, ItemU.ItemType.Weapon));
-        items.Add(new ItemU("sword02", 1, "better sword 2", 10, 10, 1, ItemU.ItemType.Weapon));
+        items.Add(new ItemU("potion04", 1, "Poison", 10, 10, 1, ItemU.ItemType.Consumable));
+        items.Add(new ItemU("helmet01", 2, "Nice helmet", 10, 10, 1, ItemU.ItemType.Head));
+      
+
+       /* items.Add(new ItemU("sword02", 1, "better sword 2", 10, 10, 1, ItemU.ItemType.Weapon));
         items.Add(new ItemU("potion01", 2, "Heaaalth", 10, 10, 1, ItemU.ItemType.Consumable));
         items.Add(new ItemU("sword03", 3, "Nice sword 3", 10, 10, 1, ItemU.ItemType.Weapon));
         items.Add(new ItemU("helmet01", 4, "Nice helmet", 10, 10, 1, ItemU.ItemType.Armore));
@@ -19,6 +23,6 @@ public class ItemDatabase : MonoBehaviour {
         items.Add(new ItemU("potion03", 7, "poisooon", 10, 10, 1, ItemU.ItemType.Consumable));
         items.Add(new ItemU("potion04", 8, "woter", 10, 10, 1, ItemU.ItemType.Consumable));
         items.Add(new ItemU("food03", 9, "apple", 10, 10, 1, ItemU.ItemType.Consumable));
-	}
+	*/}
 }
 
