@@ -32,14 +32,14 @@ public class GuiGenerator : MonoBehaviour
 
     Inventory inventoryScript; //instantiate ///// REQUIRE
     GameObject inventory; ///// REQUIRE
-    bool showInventory = false; ///// REQUIRE
+    bool showInventory = false; ///// REQUIRE*/
 
 
 	void Start () 
 	{
         inventory = GameObject.FindGameObjectWithTag("Canvas");///// REQUIRE
         inventoryScript = GameObject.FindGameObjectWithTag("Inventory").GetComponent<Inventory>(); ///// REQUIRE
-        inventory.SetActive(false);///// REQUIRE
+        inventory.SetActive(false);///// REQUIRE*/
 
 		char1.addStats (STARTING_POINTS);
 		stats = GameObject.FindGameObjectWithTag ("Stats");
@@ -53,27 +53,30 @@ public class GuiGenerator : MonoBehaviour
         {
             showInventory = !showInventory;
             inventory.SetActive(showInventory);
+            //method to remove the list of items from drop box 
         }
 
         //important for project part, when i click to item
+        //if this item that we klick by MAUSE in our RANGE
         if (Input.GetMouseButtonDown(0))
         {
+            // if mouse view in range to take an item
             RaycastHit hit;
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             if (Physics.Raycast(ray, out hit))
             {
                 float distance = Vector3.Distance(hit.transform.position, this.transform.position);
-                //Debug.Log(distance);
+                Debug.Log(distance);
 
                 if (hit.transform.tag == "Item" && distance <= 3)
                 {
-                    //Debug.Log("hit");
+                    Debug.Log("hit");
                     inventoryScript.addExistingItem(hit.transform.GetComponent<DroppedItem>().item);
                     Destroy(hit.transform.gameObject);
 
                 }///// REQUIRE
             }///// REQUIRE
-        }///// REQUIRE
+        }///// REQUIRE*/
 
 		if (Input.GetKeyDown("c"))
 		{

@@ -20,8 +20,6 @@ public class CharacterSlot : MonoBehaviour, IPointerDownHandler, IDragHandler {
         {
             transform.GetChild(0).GetComponent<Image>().enabled = true;
             transform.GetChild(0).GetComponent<Image>().sprite = item.itemIcon;
-
-
         }
         else
         {
