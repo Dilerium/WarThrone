@@ -9,14 +9,16 @@ public class SlotScript : MonoBehaviour, IPointerDownHandler, IPointerEnterHandl
     Image itemImage;
     public int slotNumber; // index 0, gois to list items in inventory
     Inventory inventory;
+
     Text itemAmount;
 
 
 	// Use this for initialization
 	void Start () {
+
         itemAmount = gameObject.transform.GetChild(1).GetComponent<Text>();
         inventory = GameObject.FindGameObjectWithTag("Inventory").GetComponent<Inventory>(); //tag game object
-        itemImage = gameObject.transform.GetChild(0).GetComponent<Image>();   
+        itemImage = gameObject.transform.GetChild(0).GetComponent<Image>();
 	}
 	
 	// Update is called once per frame
@@ -27,13 +29,16 @@ public class SlotScript : MonoBehaviour, IPointerDownHandler, IPointerEnterHandl
         if (inventory.Items[slotNumber].itemName != null)
         {
             itemAmount.enabled = false;
+
             itemImage.enabled = true;
             itemImage.sprite = inventory.Items[slotNumber].itemIcon;
+           
 
             if (inventory.Items[slotNumber].itemType == ItemU.ItemType.Consumable)
             {
                 itemAmount.enabled = true;
                 itemAmount.text = "" + inventory.Items[slotNumber].itemValue;
+
             }
         }
         else
@@ -45,9 +50,9 @@ public class SlotScript : MonoBehaviour, IPointerDownHandler, IPointerEnterHandl
 
     public void OnPointerDown(PointerEventData data)
     {
-        if (data.button == PointerEventData.InputButton.Middle)//split comsumable ot item 
+        if (data.button == PointerEventData.InputButton.Middle)
         {
-            if (inventory.Items[slotNumber].itemValue > 1 && !inventory.draggingItem && inventory.Items[slotNumber].itemType == ItemU.ItemType.Consumable)
+            if (inventory.Items[slotNumber].itemValue > 1 && !inventory.draggingItem && inventory.Items[slotNumber].itemType == ItemU.ItemType.Consumable) ;
             {
                 int temp = inventory.Items[slotNumber].itemValue / 2;
                 ItemU split = new ItemU(inventory.Items[slotNumber].itemName, inventory.Items[slotNumber].itemId, inventory.Items[slotNumber].itemDesc, inventory.Items[slotNumber].itemPower, inventory.Items[slotNumber].itemSpeed, temp, inventory.Items[slotNumber].itemType);
@@ -56,7 +61,7 @@ public class SlotScript : MonoBehaviour, IPointerDownHandler, IPointerEnterHandl
             }
         }
 
-        if (data.button == PointerEventData.InputButton.Right) //Drink the comcumble
+        if (data.button == PointerEventData.InputButton.Right)
         {
             if (inventory.Items[slotNumber].itemType == ItemU.ItemType.Consumable)
             {
@@ -71,7 +76,7 @@ public class SlotScript : MonoBehaviour, IPointerDownHandler, IPointerEnterHandl
             }
         }
 
-        if (inventory.Items[slotNumber].itemName == null) // DRAG item from one slot to another
+        if (inventory.Items[slotNumber].itemName == null)
         {
             if (inventory.draggingItem)
             {
@@ -128,15 +133,19 @@ public class SlotScript : MonoBehaviour, IPointerDownHandler, IPointerEnterHandl
 
         if (!inventory.draggingItem && data.button == PointerEventData.InputButton.Left)
         {
-            if(inventory.Items[slotNumber].itemType == ItemU.ItemType.Consumable)
+
+            /*if (inventory.Items[slotNumber].itemType == Item.ItemType.Consumable)
             {
                 inventory.Items[slotNumber].itemValue++;
             }
+            */
             if (inventory.Items[slotNumber].itemName != null)
             {
                 inventory.showDraggedItem(inventory.Items[slotNumber], slotNumber);
                 inventory.Items[slotNumber] = new ItemU();
+
                 itemAmount.enabled = false;
+
             }
         }
     }

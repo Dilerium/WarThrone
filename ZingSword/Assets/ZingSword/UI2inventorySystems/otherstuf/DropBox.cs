@@ -7,10 +7,10 @@ using System.Collections.Generic;
 public class DropBox : MonoBehaviour, IPointerDownHandler {
 
     Inventory inventory;
-    public GameObject[] droppedItem; // ITEMS on graund
-    public List <GameObject> nearUs = new List<GameObject>(); // Items near US
+    public GameObject[] droppedItem;
+    public List <GameObject> nearUs = new List<GameObject>();
     public GameObject itemBox;
-    public List<GameObject> listItemBox = new List<GameObject>(); //list of every item box in the drop box
+    public List<GameObject> listItemBox = new List<GameObject>();
 
 	// Use this for initialization
 	void Start () {
@@ -37,17 +37,16 @@ public class DropBox : MonoBehaviour, IPointerDownHandler {
     void createItemsInBox()
     {
         //145
-        Vector3 posi = new Vector3(0, (-55 * listItemBox.Count) + 145, 0);//110
+        Vector3 posi = new Vector3(0, (-55 * listItemBox.Count) + 145, 0);
         GameObject item = (GameObject)Instantiate(itemBox);
 
         ItemInBox boxWithItem = item.GetComponent<ItemInBox>();
         boxWithItem.index = listItemBox.Count;
         boxWithItem.item = nearUs[listItemBox.Count].GetComponent<DroppedItem>().item;
-       
-        
 
         listItemBox.Add(item);
         item.transform.parent = this.gameObject.transform;
+
         item.GetComponent<RectTransform>().localPosition = posi;
 
         item.transform.GetChild(0).GetComponent<Image>().sprite = nearUs[listItemBox.Count - 1].GetComponent<DroppedItem>().item.itemIcon;
@@ -59,11 +58,11 @@ public class DropBox : MonoBehaviour, IPointerDownHandler {
         }
     }
 
-    void UppdateItemBoxPosition()//new position of item in the drop box
+    void UppdateItemBoxPosition()
     {
         for (int i = 0; i < listItemBox.Count; i++)
         {
-            Vector3 posi = new Vector3(0, (-55 * i) + 145, 0);
+            Vector3 posi = new Vector3(0, (-55 * i) + 110, 0);
             listItemBox[i].GetComponent<RectTransform>().localPosition = posi;
         }
     }
@@ -72,10 +71,10 @@ public class DropBox : MonoBehaviour, IPointerDownHandler {
     {
         for (int i = 0; i < nearUs.Count; i++)
         {
-            float distance = 100000000;//otherwise it wont work haha
-            if (nearUs[i] != null) // getting distance if not null
+            float distance = 100000000;
+            if (nearUs[i] != null)
                 distance = Vector3.Distance(nearUs[i].transform.position, GameObject.FindGameObjectWithTag("Player").transform.position);
-            if(distance > 3) //delitting the item from list if it is not in range
+            if(distance > 3)
             {
                 Destroy(listItemBox[i]);
                 listItemBox.RemoveAt(i);
@@ -85,17 +84,16 @@ public class DropBox : MonoBehaviour, IPointerDownHandler {
         }
     }
 
-    void getDroppedItemsInRange()// to get a dropped item in range with player good for coins methdo as well
+    void getDroppedItemsInRange()
     {
         for (int i = 0; i < droppedItem.Length; i++)
         {
             float distance = Vector3.Distance(droppedItem[i].transform.position, GameObject.FindGameObjectWithTag("Player").transform.position);
-            //Debug.Log(distance);
-            if (distance <= 3) // if item smaller than les than 3, we have to get this item
+            Debug.Log(distance);
+            if (distance <= 3)
             {
                 ItemU item = droppedItem[i].GetComponent<DroppedItem>().item;
-               // Debug.Log(item.ToString());
-                if (nearUs.Count == 0) // if list is empty need to instant the item
+                if (nearUs.Count == 0)
                 {
                     nearUs.Add(droppedItem[i]);
                     //create item box in box
@@ -108,7 +106,7 @@ public class DropBox : MonoBehaviour, IPointerDownHandler {
                     {
                         if(nearUs[k] != null)
                         {
-                            if (nearUs[k].GetComponent<DroppedItem>().item.Equals(item)) // if it not equal to item, add it to our list
+                            if (nearUs[k].GetComponent<DroppedItem>().item.Equals(item))
                             {
                                 temp = true;
                             }
@@ -124,7 +122,7 @@ public class DropBox : MonoBehaviour, IPointerDownHandler {
             }
         }
     }
-   
+
     public void OnPointerDown(PointerEventData data)
     {
         if (inventory.draggingItem)
@@ -136,11 +134,8 @@ public class DropBox : MonoBehaviour, IPointerDownHandler {
 
     public void dropItem(ItemU item) // instanciate an item.
     {
-        //instantiating the game objects
-        //require the class that is serializable
         try
         {
-            Debug.Log(item.ToString());
             GameObject itemAsGameObject = (GameObject)Instantiate(item.itemModel, GameObject.FindGameObjectWithTag("Player").transform.position, Quaternion.identity);
             itemAsGameObject.GetComponent<DroppedItem>().item = item;
         }

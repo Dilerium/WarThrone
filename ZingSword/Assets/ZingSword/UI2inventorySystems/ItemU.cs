@@ -32,14 +32,18 @@ public class ItemU {
 
     public ItemU(string name, int id, string desc, int speed, int power, int value, ItemType type)
     {
+        //GameObject slot = Instantiate(Resources.Load<GameObject>("ItemDatabase"));
+        //itemIcon = Resources.Load<Sprite>("Assets/ZingSword/UI2inventorySystems/Resources " + name);
+       // itemIcon = Resources.Load<Sprite>("Assets/ZingSword/UI2inventorySystems/Resources/" + name);
+      
         itemName = name;
         itemId = id;
         itemDesc = desc;
+        itemIcon = Resources.Load<Sprite>("Assets/ZingSword/UI2inventorySystems/Resources/" + name);
         itemSpeed = speed;
         itemPower = power;
         itemValue = value;
         itemType = type;
-        itemIcon = Resources.Load<Sprite>("" + name);
         itemModel = Resources.Load<GameObject>("DroppedItem");
     }
 
@@ -48,8 +52,5 @@ public class ItemU {
 
     }
 
-    public string ToString()
-    {
-        return this.itemName;
-    }
+
 }
