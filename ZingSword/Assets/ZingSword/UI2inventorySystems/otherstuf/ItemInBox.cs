@@ -16,6 +16,7 @@ public class ItemInBox : MonoBehaviour, IPointerDownHandler {
 	
     public void OnPointerDown(PointerEventData data)
     {
+        Debug.Log(invetory.ToString() + " itemInBox OnPointerDown method!");
         invetory.addExistingItem(item);
         Destroy(dropbox.listItemBox[index]);
 
