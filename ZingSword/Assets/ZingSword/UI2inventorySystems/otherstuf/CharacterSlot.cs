@@ -6,10 +6,10 @@ using UnityEngine.EventSystems;
 public class CharacterSlot : MonoBehaviour, IPointerDownHandler, IDragHandler {
 
     public int index;
-    public ItemU item;
-    Inventory inventory;
+    public ItemU item; //store item in it
+    Inventory inventory; //require a inventory script
 
-    void Start()
+    void Start()//when start we need inventory component, to interact with the inventory
     {
         inventory = GameObject.FindGameObjectWithTag("Inventory").GetComponent<Inventory>();
     }
@@ -86,7 +86,7 @@ public class CharacterSlot : MonoBehaviour, IPointerDownHandler, IDragHandler {
             }
 
             //Trosers
-            if (index == 3 && inventory.draggedItem.itemType == ItemU.ItemType.Trousers)
+            if (index == 3 && inventory.draggedItem.itemType == ItemU.ItemType.Bow)
             {
                 if (item.itemType != ItemU.ItemType.None)
                 {
@@ -136,7 +136,6 @@ public class CharacterSlot : MonoBehaviour, IPointerDownHandler, IDragHandler {
                     item = inventory.draggedItem;
                     inventory.closeDraggedItem();
                 }
-                
             }
         }
     }

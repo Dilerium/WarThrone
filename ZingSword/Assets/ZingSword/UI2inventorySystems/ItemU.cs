@@ -17,17 +17,14 @@ public class ItemU {
 
     public enum ItemType
     {
+        None,
         Weapon,
         Consumable,
-        Quest,
         Head,
         Shoes,
-        Trousers,
         Gloves,
         Armore,
-        Rings,
-        Necklace,
-		None
+        Bow
     }
 
     public ItemU(string name, int id, string desc, int speed, int power, int value, ItemType type)
