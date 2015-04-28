@@ -24,6 +24,7 @@ public class ItemU {
         Shoes,
         Gloves,
         Armore,
+        Food,
         Bow
     }
 
