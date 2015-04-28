@@ -86,12 +86,10 @@ public class Mob : MonoBehaviour
 			if(despawnTime > 1500)
 			{
 				terrain.GetComponent<EnemySpawn>().removeEnemy(this.id);
-				terrain.GetComponent<EnemySpawn>().spawned[this.id] = false;
 				foreach (GameObject gO in GameObject.FindGameObjectsWithTag("Enemy"))
 				{
 					if(gO.GetComponent<Mob>().getId() == this.id)
 					{
-						Debug.Log ("Despawning enemy : " + this.id);
 						gO.SetActive(false);
 					}
 				}

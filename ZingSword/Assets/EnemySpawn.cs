@@ -6,13 +6,12 @@ public class EnemySpawn : MonoBehaviour
 	public GameObject enemy;
 	public Vector3[] spawnPoints;
 	public bool[] spawned;
-	private List<Mob> newEnemies = new List<Mob>();
-	private static Vector3[] spawnPoints2;
+	private List<GameObject> newEnemies = new List<GameObject>();
 
 	// Use this for initialization
 	void Start () 
 	{
-		
+		enemy.SetActive (false);
 	}
 	
 	// Update is called once per frame
@@ -22,26 +21,23 @@ public class EnemySpawn : MonoBehaviour
 		{
 			if(!spawned[i])
 			{
-				newEnemies.Add((Mob) GameObject.Instantiate (enemy.GetComponent ("Mob"), spawnPoints[i], transform.rotation));
+				newEnemies.Insert(i, (GameObject) GameObject.Instantiate (enemy, spawnPoints[i], transform.rotation));
 				spawned[i] = true;
 				Debug.Log (newEnemies[i].transform.position.ToString () + " " + enemy.ToString ());
-				newEnemies[i].setId(i);
+				newEnemies[i].SetActive(true);
+				newEnemies[i].GetComponent <Mob>().setId(i);
 			}
-			/*if(newEnemies[i] == null)
-			{
-				spawned[i] = false;
-			}*/
 		}
-		spawnPoints2 = spawnPoints;
 	}
 
 	public Vector3 getSpawn(int index)
 	{
-		return spawnPoints2[index];
+		return spawnPoints[index];
 	}
 
 	public void removeEnemy(int id)
 	{
 		newEnemies [id] = null;
+		spawned [id] = false;
 	}
 }
