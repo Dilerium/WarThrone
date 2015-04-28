@@ -1073,7 +1073,7 @@ MonoBehaviour:
   pivotRTrans: {fileID: 1513294476}
   mapRTrans: {fileID: 277852250}
   maskImg: {fileID: 677993607}
-  mapOrigin: {x: 584.599976, y: 225.100006, z: 37.7999992}
+  mapOrigin: {x: 561.599976, y: 143.100006, z: 37.7999992}
   _mapCamera: {fileID: 1235740493}
   mDynamicRT: {fileID: 1235740491}
   map: {fileID: 277852251}
@@ -3322,6 +3322,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c49888559ff78084ab61c3da50159853, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  die: {fileID: 7400012, guid: 86c591ebd74142c4d93243d9fa9544da, type: 3}
+  dying: 0
+  dead: 0
   HealthBar: {fileID: 2035137465}
 --- !u!114 &384516667
 MonoBehaviour:
@@ -9456,25 +9459,6 @@ Transform:
   - {fileID: 873150875}
   m_Father: {fileID: 1485763335}
   m_RootOrder: 1
---- !u!84 &1183966359
-RenderTexture:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_Name: Dynamically created RT by AB Minimap
-  m_Width: 200
-  m_Height: 200
-  m_AntiAliasing: 2
-  m_DepthFormat: 2
-  m_ColorFormat: 0
-  m_MipMap: 0
-  m_GenerateMips: 1
-  m_SRGB: 0
-  m_TextureSettings:
-    m_FilterMode: 2
-    m_Aniso: 1
-    m_MipBias: 0
-    m_WrapMode: 1
 --- !u!1 &1192557047
 GameObject:
   m_ObjectHideFlags: 0
@@ -9924,7 +9908,7 @@ Camera:
     serializedVersion: 2
     m_Bits: 4294967263
   m_RenderingPath: -1
-  m_TargetTexture: {fileID: 1183966359}
+  m_TargetTexture: {fileID: 1676918713}
   m_TargetDisplay: 0
   m_HDR: 0
   m_OcclusionCulling: 1
@@ -11368,6 +11352,10 @@ Prefab:
       propertyPath: m_CollisionDetection
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 11439124, guid: 87a7ab9a2fc8fd84495a3f2264fb30e2, type: 2}
+      propertyPath: die
+      value: 
+      objectReference: {fileID: 7400012, guid: 86c591ebd74142c4d93243d9fa9544da, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 87a7ab9a2fc8fd84495a3f2264fb30e2, type: 2}
   m_RootGameObject: {fileID: 384516657}
@@ -13214,6 +13202,25 @@ MeshFilter:
   m_PrefabInternal: {fileID: 1417609801}
   m_GameObject: {fileID: 1676410544}
   m_Mesh: {fileID: 4300000, guid: 9dc9a634566aeaa44a5640b300c404b7, type: 3}
+--- !u!84 &1676918713
+RenderTexture:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Dynamically created RT by AB Minimap
+  m_Width: 200
+  m_Height: 200
+  m_AntiAliasing: 2
+  m_DepthFormat: 2
+  m_ColorFormat: 0
+  m_MipMap: 0
+  m_GenerateMips: 1
+  m_SRGB: 0
+  m_TextureSettings:
+    m_FilterMode: 2
+    m_Aniso: 1
+    m_MipBias: 0
+    m_WrapMode: 1
 --- !u!1 &1682331172
 GameObject:
   m_ObjectHideFlags: 0
@@ -13536,7 +13543,7 @@ Prefab:
     - target: {fileID: 2093396, guid: 59f0a71771c15f04aadc257ecd34da73, type: 2}
       propertyPath: m_TargetTexture
       value: 
-      objectReference: {fileID: 1183966359}
+      objectReference: {fileID: 1676918713}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 59f0a71771c15f04aadc257ecd34da73, type: 2}
   m_RootGameObject: {fileID: 665704510}

@@ -17,6 +17,7 @@ public class Mob : MonoBehaviour
 	private int health;
 	private int strength;
 	private int defense;
+	private int despawnTime;
 	private bool isDying = false;
 	private bool dead = false;
 
@@ -60,7 +61,7 @@ public class Mob : MonoBehaviour
 					// if enemy has player in range it should attack the player.
 					doAttack ((int)(this.strength * 2.25));
 				}
-				else if(Vector3.Distance (this.transform.position, EnemySpawn.getSpawn(this.id)) > 1)
+				else if(Vector3.Distance (this.transform.position, terrain.GetComponent<EnemySpawn>().getSpawn(this.id)) > 1)
 				{
 						returnToPost();
 				}
@@ -77,6 +78,22 @@ public class Mob : MonoBehaviour
 			{
 				dead = true;
 				player.setExp (100);
+			}
+		}
+		else if (dead)
+		{
+			despawnTime ++;
+			if(despawnTime > 1500)
+			{
+				terrain.GetComponent<EnemySpawn>().removeEnemy(this.id);
+				terrain.GetComponent<EnemySpawn>().spawned[this.id] = false;
+				foreach (GameObject gO in GameObject.FindGameObjectsWithTag("Enemy"))
+				{
+					if(gO.GetComponent<Mob>().getId() == this.id)
+					{
+						gO.SetActive(false);
+					}
+				}
 			}
 		}
 	}
@@ -130,7 +147,7 @@ public class Mob : MonoBehaviour
 
 	void returnToPost()
 	{
-		this.transform.LookAt (EnemySpawn.getSpawn(this.id));
+		this.transform.LookAt (terrain.GetComponent<EnemySpawn>().getSpawn(this.id));
 		controller.SimpleMove (this.transform.forward * speed);
 		animation.CrossFade (run.name);
 	}

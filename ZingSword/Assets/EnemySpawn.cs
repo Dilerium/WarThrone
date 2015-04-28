@@ -35,8 +35,13 @@ public class EnemySpawn : MonoBehaviour
 		spawnPoints2 = spawnPoints;
 	}
 
-	public static Vector3 getSpawn(int index)
+	public Vector3 getSpawn(int index)
 	{
 		return spawnPoints2[index];
+	}
+
+	public void removeEnemy(int id)
+	{
+		newEnemies [id] = null;
 	}
 }
