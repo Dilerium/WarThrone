@@ -5,6 +5,10 @@ using System;
 
 public class Player : MonoBehaviour
 {
+	public AnimationClip die;
+	public bool dying = false;
+	public bool dead = false;
+
 	private string charName;
 	private string primaryAttribute;
 	private int strength;
@@ -19,12 +23,10 @@ public class Player : MonoBehaviour
 	private int defence;
 	private int level; 
 	private int exp;
-	private int maxExp;
+	private int maxExp = 100;
 	private int attack;
 	private int armour;
 	private int statPoints;
-	private bool dying = false;
-	private bool dead = false;
 	private Item equippedWeapon;
 	private Item equippedHelm;
 	private Item equippedArmour;
@@ -45,6 +47,44 @@ public class Player : MonoBehaviour
 		Stamina,
 		Defence
 	}
+	
+	public void Start()
+	{
+		this.charName = "Aegnor";
+		initialize ();
+	}
+	
+	void Update()
+	{
+		if(animation[die.name].time > 2)
+		{
+			dead = true;
+			dying = false;
+		}
+		else if(dying && !dead)
+		{
+			animation.Play (die.name);
+			GameObject.FindGameObjectWithTag("Player").GetComponent<CharacterController>().enabled = false;
+			GameObject.FindGameObjectWithTag("Player").GetComponent<ThirdPersonCamera>().enabled = false;
+			GameObject.FindGameObjectWithTag("Player").GetComponent<ThirdPersonController>().enabled = false;
+			GameObject.FindGameObjectWithTag("Player").GetComponent<Combat>().enabled = false;
+		}
+		else
+		{
+
+		}
+	}
+
+	public void initialize()
+	{
+		this.setHealth (5);
+		this.setStrength (5);
+		this.setDefence (5);
+		this.setSpeed (5);
+		this.setStamina (5);
+		this.statPoints = 0;
+		this.level = 1;
+	}
 
 	public Player()
 	{
@@ -61,7 +101,7 @@ public class Player : MonoBehaviour
 		this.charName = name;
 		this.strength = 5;
 		this.speed = 5;
-		this.health = 100; //Health Bar
+		this.health = 5; //Health Bar
 		this.stamina = 5;
 		this.defence = 5;
 		this.level = 1;
@@ -190,7 +230,7 @@ public class Player : MonoBehaviour
 	public void setDefence(int gain)
 	{
 		this.defence += gain;
-		this.armour = (int)(defence * 3);
+		this.armour = (int)(defence * 1.5);
 		this.statPoints -= gain;
 	}
 
@@ -225,11 +265,6 @@ public class Player : MonoBehaviour
 		return this.statPoints;
 	}
 
-	public void addStats(int newPoints)
-	{
-		this.statPoints += newPoints;
-	}
-
 	public void setExp(int exp)
 	{
 		this.exp += exp;
@@ -245,22 +280,22 @@ public class Player : MonoBehaviour
 	{
 		this.level += 1;
 		this.addAttributes (5);
-		this.maxExp = (int) (maxExp * 1.15); //Had a problem with a cast missing exception when using "maxExp *= 1.15;"
+		this.maxExp = (int) (maxExp * 1.15);
+		this.exp = 0;//Had a problem with a cast missing exception when using "maxExp *= 1.15;"
+	}
+
+	public int getLevel()
+	{
+		return this.level;
 	}
 
 	public void takeDamage(int damage)
 	{
-		int dealtDamage = (armour - damage);
+		int dealtDamage = (damage - armour);
 		this.currHealth -= (dealtDamage > 0) ? dealtDamage : 1;
         this.HealthBar.size = health / 100f;
 		if(this.currHealth <= 0) {  this.dying = true; }
-
-	}
-
-	// Use this for initialization
-	void Start () 
-	{
-
+		Debug.Log ("Player : " + this.currHealth);
 	}
 
 	public void useItem(Item item)
@@ -297,12 +332,13 @@ public class Player : MonoBehaviour
 		}
 	}
 
-	void Update () 
+	public bool isDying()
 	{
-		if (dying) 
-		{
-			// Run animation
-			this.dead = true;
-		}
+		return dying;
+	}
+
+	public bool isDead()
+	{
+		return dead;
 	}
 }

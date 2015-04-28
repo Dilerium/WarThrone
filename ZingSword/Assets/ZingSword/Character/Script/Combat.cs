@@ -25,6 +25,15 @@ public class Combat : MonoBehaviour {
 			animation.Play(attack.name);
 			ClickToMoveCharControll.attack = true;
 
+			foreach (GameObject gO in GameObject.FindGameObjectsWithTag("Enemy"))
+			{
+				if(Vector3.Distance (gO.transform.position, GameObject.FindGameObjectWithTag("Player").transform.position) < 3)
+				{
+					opponent = gO;
+					break;
+				}
+			}
+
 			//if there is mobs in range, while press attack
 			//player will transform uppon to anemy
 			//to hit him
@@ -46,12 +55,14 @@ public class Combat : MonoBehaviour {
 	{
 		if (opponent != null && animation.IsPlaying (attack.name) && !impacted) 
 		{
+			Debug.Log ("Player attack in progress");
 			//if we have reach impacted time, we going to hit our opponent
-			if ((animation [attack.name].time) > (animation [attack.name].length * impactTime)) 
-			{
-				opponent.GetComponent<Mob> ().getHit (damage);
-				impacted = true;
-			}
+		}
+		if ((animation [attack.name].time) >= 1.15) 
+		{
+			Debug.Log ("Player attack completed");
+			opponent.GetComponent<Mob> ().getHit ((int)GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<Player>().getAttack());
+			impacted = true;
 		}
 	}
 }

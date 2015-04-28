@@ -16,7 +16,9 @@ public class Mob : MonoBehaviour
 	private int id;
 	private int health;
 	private int strength;
-	private bool hasMoved = false;
+	private int defense;
+	private bool isDying = false;
+	private bool dead = false;
 
 	public Mob()
 	{
@@ -31,43 +33,60 @@ public class Mob : MonoBehaviour
 	// Use this for initialization
 	void awake()
 	{
-		this.health = 100;
-		this.strength = 5;
+		
 	}
 
 	void Start () 
 	{
-
+		this.health = (player.getLevel () > 1) ? (100 * (player.getLevel ()/2)) : 50;
+		this.strength = (5 * player.getLevel ());
+		this.defense = (3 * player.getLevel ());
 	}
 	
 	// Update is called once per frame
 	void Update () 
 	{
-		if (inSight ())
+		if(!dead)
 		{
-			Debug.Log ("You are being chased, zomg RUNAWAY!");
-			// If enemy has player in sight it should approach the player.
-			chase ();
-		}
-		else if(inRange ())
-		{
-			// if enemy has player in range it should attack the player.
-			doAttack ();
-		}
-		else if(Vector3.Distance (this.transform.position, EnemySpawn.getSpawn(this.id)) > 1)
-		{
-				Debug.Log ("An enemy is returning to there post!");
-				returnToPost();
-		}
-		else
-		{
-			Debug.Log ("Enemy is idle... STAB HIM!");
-			animation.CrossFade(idle.name);
+			if(!isDying)
+			{
+				if (inSight ())
+				{
+					// If enemy has player in sight it should approach the player.
+					chase ();
+				}
+				else if(inRange ())
+				{
+					// if enemy has player in range it should attack the player.
+					doAttack ((int)(this.strength * 2.25));
+				}
+				else if(Vector3.Distance (this.transform.position, EnemySpawn.getSpawn(this.id)) > 1)
+				{
+						returnToPost();
+				}
+				else
+				{
+					animation.CrossFade(idle.name);
+				}
+			}
+			else if(!animation.IsPlaying(die.name))
+			{
+				animation.Play (die.name);
+			}
+			else if(animation[die.name].time > 1.15)
+			{
+				dead = true;
+				player.setExp (100);
+			}
 		}
 	}
 
 	bool inSight()
 	{
+		if(player.dying || player.dead)
+		{
+			return false;
+		}
 		//if distance between the position of our enemy and position of our player
 		//is less than given value return true
 		if (Vector3.Distance(this.transform.position, player.transform.position) < 15 && Vector3.Distance(this.transform.position, player.transform.position) > 2) 
@@ -82,6 +101,10 @@ public class Mob : MonoBehaviour
 
 	bool inRange()
 	{
+		if(player.dying || player.dead)
+		{
+			return false;
+		}
 		if (Vector3.Distance (this.transform.position, player.transform.position) < 3)
 		{
 			return true;
@@ -95,11 +118,13 @@ public class Mob : MonoBehaviour
 	//HEALTH controling, geing damage and minus from full health 
 	public void getHit(int damage)
 	{
-		health = health - damage;
+		int dealtDamage = damage - defense;
+		health -= (dealtDamage > 0) ? dealtDamage : 1;
+		Debug.Log ("Target : " + this.health);
 		if (health <= 0) 
 		{
+			isDying=true;
 			health = 0;
-			//player.animation.Play(die.name);
 		}
 	}
 
@@ -125,10 +150,16 @@ public class Mob : MonoBehaviour
 		player.GetComponent<Combat> ().opponent = gameObject;
 	}
 
-	void doAttack()
+	void doAttack(int attackStrength)
 	{
-		animation.CrossFade (attack.name);
-		player.takeDamage (20);
+		if(!animation.IsPlaying (attack.name))
+		{
+			animation.CrossFade (attack.name);
+		}
+		if(animation[attack.name].time >= 1.139)
+		{
+			player.takeDamage (attackStrength);
+		}
 	}
 
 	public int getId()

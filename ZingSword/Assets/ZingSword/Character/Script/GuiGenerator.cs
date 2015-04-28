@@ -8,7 +8,7 @@ using UnityEngine.UI;
 public class GuiGenerator : MonoBehaviour 
 {
 	public Player char1;
-	private const int STARTING_POINTS = 50;
+	private const int STARTING_POINTS = 10;
 	private bool show = false;
 	public Text currStrength;
 	public Text currSpeed;
@@ -34,16 +34,30 @@ public class GuiGenerator : MonoBehaviour
     GameObject inventory; ///// REQUIRE
     bool showInventory = false; ///// REQUIRE*/
 
-
 	void Start () 
 	{
-        inventory = GameObject.FindGameObjectWithTag("Canvas");///// REQUIRE
-        inventoryScript = GameObject.FindGameObjectWithTag("Inventory").GetComponent<Inventory>(); ///// REQUIRE
-        inventory.SetActive(false);///// REQUIRE*/
+		try
+		{
+			char1 = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
+			char1.addAttributes (STARTING_POINTS);
+			stats = GameObject.FindGameObjectWithTag ("Stats");
+			stats.SetActive (false);
+		}
+		catch(Exception e)
+		{
+			Debug.Log (e.StackTrace);
+		}
 
-		char1.addStats (STARTING_POINTS);
-		stats = GameObject.FindGameObjectWithTag ("Stats");
-		stats.SetActive (false);
+		try
+		{
+			inventory = GameObject.FindGameObjectWithTag("Canvas");///// REQUIRE
+			inventoryScript = inventory.GetComponent<Inventory> (); ///// REQUIRE
+			inventory.SetActive(false);///// REQUIRE*/
+		}
+		catch(Exception e)
+		{
+			Debug.Log (e.StackTrace);
+		}
 	}
 
 	// Update is called once per frame
@@ -66,11 +80,11 @@ public class GuiGenerator : MonoBehaviour
             if (Physics.Raycast(ray, out hit))
             {
                 float distance = Vector3.Distance(hit.transform.position, this.transform.position);
-                Debug.Log(distance);
+                //Debug.Log(distance);
 
                 if (hit.transform.tag == "Item" && distance <= 3)
                 {
-                    Debug.Log("hit");
+                    //Debug.Log("hit");
                     inventoryScript.addExistingItem(hit.transform.GetComponent<DroppedItem>().item);
                     Destroy(hit.transform.gameObject);
 
@@ -86,7 +100,7 @@ public class GuiGenerator : MonoBehaviour
 
 		if (show)
 		{
-			foreach (Button btn in GameObject.FindGameObjectWithTag("Stats").GetComponentsInChildren<Button>())
+			foreach (Button btn in stats.GetComponentsInChildren<Button>())
 			{
 				btn.enabled = true;
 			}
