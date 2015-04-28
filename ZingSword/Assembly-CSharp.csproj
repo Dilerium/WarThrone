@@ -46,6 +46,9 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\BarInventory.cs" />
+     <Compile Include="Assets\DayTime.cs" />
+     <Compile Include="Assets\DragHandler.cs" />
      <Compile Include="Assets\EnemySpawn.cs" />
      <Compile Include="Assets\Examples\Minimap\Scripts\SimpleMovement.cs" />
      <Compile Include="Assets\Scripts\Minimap\Core\MActor.cs" />
