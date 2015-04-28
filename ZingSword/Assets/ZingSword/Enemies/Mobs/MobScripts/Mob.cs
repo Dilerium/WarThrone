@@ -91,9 +91,11 @@ public class Mob : MonoBehaviour
 				{
 					if(gO.GetComponent<Mob>().getId() == this.id)
 					{
+						Debug.Log ("Despawning enemy : " + this.id);
 						gO.SetActive(false);
 					}
 				}
+				despawnTime = 0;
 			}
 		}
 	}
