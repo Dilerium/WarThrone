@@ -18,7 +18,7 @@ public class Mob : MonoBehaviour
 	private int strength;
 	private int defense;
 	private int despawnTime;
-	private bool isDying = false;
+	private bool dying = false;
 	private bool dead = false;
 
 	public Mob()
@@ -49,7 +49,7 @@ public class Mob : MonoBehaviour
 	{
 		if(!dead)
 		{
-			if(!isDying)
+			if(!dying)
 			{
 				if (inSight ())
 				{
@@ -140,7 +140,7 @@ public class Mob : MonoBehaviour
 		Debug.Log ("Target : " + this.health);
 		if (health <= 0) 
 		{
-			isDying=true;
+			dying=true;
 			health = 0;
 		}
 	}
@@ -197,5 +197,15 @@ public class Mob : MonoBehaviour
 	public void setName(string newName)
 	{
 		name = newName;
+	}
+
+	public bool isDying()
+	{
+		return dying;
+	}
+
+	public bool isDead()
+	{
+		return dead;
 	}
 }

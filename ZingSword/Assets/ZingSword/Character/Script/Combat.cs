@@ -27,7 +27,8 @@ public class Combat : MonoBehaviour {
 
 			foreach (GameObject gO in GameObject.FindGameObjectsWithTag("Enemy"))
 			{
-				if(Vector3.Distance (gO.transform.position, GameObject.FindGameObjectWithTag("Player").transform.position) < 3)
+				if((Vector3.Distance (gO.transform.position, GameObject.FindGameObjectWithTag("Player").transform.position) < 3) 
+				   && !gO.GetComponent<Mob>().isDying() && !gO.GetComponent<Mob>().isDying())
 				{
 					opponent = gO;
 					break;
