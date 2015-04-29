@@ -1069,11 +1069,11 @@ MonoBehaviour:
   mObjectDefaultSize: 1
   isRotatingMap: 0
   mapAngle: 0
-  currentCenterCoord: {x: -5049.99951, y: .000143051147}
+  currentCenterCoord: {x: -11660, y: .000721216202}
   pivotRTrans: {fileID: 1513294476}
   mapRTrans: {fileID: 277852250}
   maskImg: {fileID: 677993607}
-  mapOrigin: {x: 561.599976, y: 143.100006, z: 37.7999992}
+  mapOrigin: {x: 1222.59998, y: 633.099976, z: 37.7999992}
   _mapCamera: {fileID: 1235740493}
   mDynamicRT: {fileID: 1235740491}
   map: {fileID: 277852251}
@@ -3918,7 +3918,7 @@ MonoBehaviour:
   m_CastShadows: 1
   m_LightmapIndex: -1
   m_LightmapSize: 1024
-  m_DrawTreesAndFoliage: 0
+  m_DrawTreesAndFoliage: 1
   m_CollectDetailPatches: 1
   m_MaterialTemplate: {fileID: 0}
 --- !u!4 &438948586
@@ -6368,25 +6368,6 @@ Transform:
   - {fileID: 274705691}
   m_Father: {fileID: 392855029}
   m_RootOrder: 0
---- !u!84 &677066738
-RenderTexture:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_Name: Dynamically created RT by AB Minimap
-  m_Width: 200
-  m_Height: 200
-  m_AntiAliasing: 2
-  m_DepthFormat: 2
-  m_ColorFormat: 0
-  m_MipMap: 0
-  m_GenerateMips: 1
-  m_SRGB: 0
-  m_TextureSettings:
-    m_FilterMode: 2
-    m_Aniso: 1
-    m_MipBias: 0
-    m_WrapMode: 1
 --- !u!1 &677993604
 GameObject:
   m_ObjectHideFlags: 0
@@ -9772,6 +9753,25 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingLayerID: 0
   m_SortingOrder: 0
+--- !u!84 &1223460130
+RenderTexture:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Dynamically created RT by AB Minimap
+  m_Width: 200
+  m_Height: 200
+  m_AntiAliasing: 2
+  m_DepthFormat: 2
+  m_ColorFormat: 0
+  m_MipMap: 0
+  m_GenerateMips: 1
+  m_SRGB: 0
+  m_TextureSettings:
+    m_FilterMode: 2
+    m_Aniso: 1
+    m_MipBias: 0
+    m_WrapMode: 1
 --- !u!1 &1233511943
 GameObject:
   m_ObjectHideFlags: 0
@@ -9866,7 +9866,7 @@ Transform:
   m_PrefabInternal: {fileID: 1705062912}
   m_GameObject: {fileID: 1235740489}
   m_LocalRotation: {x: .707106829, y: 0, z: 0, w: .707106829}
-  m_LocalPosition: {x: -1136.40002, y: -141.899994, z: 37.7999992}
+  m_LocalPosition: {x: 6.6000061, y: 185.100006, z: 37.7999992}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 562906914}
@@ -9888,8 +9888,8 @@ MonoBehaviour:
   filterMode: 2
   _resolutionAsController: 1
   resolutionOverride: {x: 256, y: 256}
-  _rt: {fileID: 0}
-  _hasBeenInitialized: 0
+  _rt: {fileID: 1223460130}
+  _hasBeenInitialized: 1
 --- !u!114 &1235740492
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9931,7 +9931,7 @@ Camera:
     serializedVersion: 2
     m_Bits: 4294967263
   m_RenderingPath: -1
-  m_TargetTexture: {fileID: 677066738}
+  m_TargetTexture: {fileID: 1223460130}
   m_TargetDisplay: 0
   m_HDR: 0
   m_OcclusionCulling: 1
@@ -13547,7 +13547,7 @@ Prefab:
     - target: {fileID: 2093396, guid: 59f0a71771c15f04aadc257ecd34da73, type: 2}
       propertyPath: m_TargetTexture
       value: 
-      objectReference: {fileID: 677066738}
+      objectReference: {fileID: 1223460130}
     - target: {fileID: 11493314, guid: 59f0a71771c15f04aadc257ecd34da73, type: 2}
       propertyPath: mapOrigin.x
       value: 561.599976
@@ -13562,11 +13562,11 @@ Prefab:
       objectReference: {fileID: 384516658}
     - target: {fileID: 493396, guid: 59f0a71771c15f04aadc257ecd34da73, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -1136.40002
+      value: 6.6000061
       objectReference: {fileID: 0}
     - target: {fileID: 493396, guid: 59f0a71771c15f04aadc257ecd34da73, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -141.899994
+      value: 185.100006
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 59f0a71771c15f04aadc257ecd34da73, type: 2}
@@ -15393,7 +15393,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11485850, guid: dcb06ae96b3cdf2408b1d228ab633f5c, type: 2}
       propertyPath: m_DrawTreesAndFoliage
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: dcb06ae96b3cdf2408b1d228ab633f5c, type: 2}

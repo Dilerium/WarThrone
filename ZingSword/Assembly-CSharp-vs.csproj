@@ -83,6 +83,7 @@
      <Compile Include="Assets\Scripts\Minimap\Util\MSettings.cs" />
      <Compile Include="Assets\Scripts\Minimap\Util\MUtil.cs" />
      <Compile Include="Assets\Scripts\Minimap\Util\ScriptableSingleton.cs" />
+     <Compile Include="Assets\TreeCollider.cs" />
      <Compile Include="Assets\ZingSword\Character\Script\Combat.cs" />
      <Compile Include="Assets\ZingSword\Character\Script\GuiGenerator.cs" />
      <Compile Include="Assets\ZingSword\Character\Script\Player.cs" />
@@ -90,6 +91,7 @@
      <Compile Include="Assets\ZingSword\Scriptings\ClickToMoveCharControll.cs" />
      <Compile Include="Assets\ZingSword\Scriptings\Item.cs" />
      <Compile Include="Assets\ZingSword\Scriptings\minipMapScript.cs" />
+     <Compile Include="Assets\ZingSword\Scriptings\treeColliderScript.cs" />
      <Compile Include="Assets\ZingSword\UI2inventorySystems\Inventory.cs" />
      <Compile Include="Assets\ZingSword\UI2inventorySystems\ItemDatabase.cs" />
      <Compile Include="Assets\ZingSword\UI2inventorySystems\ItemU.cs" />
@@ -200,7 +202,7 @@
      <None Include="Assets\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\_BloomAndFlares\BlurAndFlares.shader" />
      <None Include="Assets\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\_BloomAndFlares\BlendForBloom.shader" />
  <Reference Include="Assembly-UnityScript-firstpass">
- <HintPath>C:/Users/David/Desktop/Year4/Project&Dissertation/Final Year Project/WarThrone/ZingSword/Library/ScriptAssemblies/Assembly-UnityScript-firstpass.dll</HintPath>
+ <HintPath>C:/Users/Donal Lally/Desktop/WarThrone/ZingSword/Library/ScriptAssemblies/Assembly-UnityScript-firstpass.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files (x86)/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/4.6.2/UnityEngine.UI.dll</HintPath>
