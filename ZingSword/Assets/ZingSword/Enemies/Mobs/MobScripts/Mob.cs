@@ -39,9 +39,9 @@ public class Mob : MonoBehaviour
 
 	void Start () 
 	{
-		this.health = (player.getLevel () > 1) ? (100 * (player.getLevel ()/2)) : 50;
-		this.strength = (5 * player.getLevel ());
-		this.defense = (3 * player.getLevel ());
+		this.health = (player.getLevel () > 1) ? ((int) 100 * (player.getLevel ()/2)) : 50;
+		this.strength = (player.getLevel () > 1) ? ((int) 5 * (player.getLevel () /2)) : 5;
+		this.defense = (player.getLevel () > 1) ? ((int) 3 * (player.getLevel () /2)) : 3;
 	}
 	
 	// Update is called once per frame
@@ -77,7 +77,7 @@ public class Mob : MonoBehaviour
 			else if(animation[die.name].time > 1.15)
 			{
 				dead = true;
-				player.setExp (100);
+				player.setExp ((player.getLevel () > 1) ? ((int) 150 * (player.getLevel ()/2)) : 100);
 			}
 		}
 		else if (dead)
@@ -85,15 +85,8 @@ public class Mob : MonoBehaviour
 			despawnTime ++;
 			if(despawnTime > 1500)
 			{
-				terrain.GetComponent<EnemySpawn>().removeEnemy(this.id);
-				foreach (GameObject gO in GameObject.FindGameObjectsWithTag("Enemy"))
-				{
-					if(gO.GetComponent<Mob>().getId() == this.id)
-					{
-						gO.SetActive(false);
-					}
-				}
 				despawnTime = 0;
+				terrain.GetComponent<EnemySpawn>().removeEnemy(this.id);
 			}
 		}
 	}

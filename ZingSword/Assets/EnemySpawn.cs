@@ -37,6 +37,8 @@ public class EnemySpawn : MonoBehaviour
 
 	public void removeEnemy(int id)
 	{
+		
+		GameObject.Destroy(newEnemies [id]);
 		newEnemies [id] = null;
 		spawned [id] = false;
 	}

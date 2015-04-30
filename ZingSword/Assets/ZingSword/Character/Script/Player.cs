@@ -280,7 +280,7 @@ public class Player : MonoBehaviour
 	{
 		this.level += 1;
 		this.addAttributes (5);
-		this.maxExp = (int) (maxExp * 1.15);
+		this.maxExp = (int) (maxExp * 1.5);
 		this.exp = 0;//Had a problem with a cast missing exception when using "maxExp *= 1.15;"
 	}
 

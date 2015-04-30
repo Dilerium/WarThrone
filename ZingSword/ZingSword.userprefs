@@ -1,9 +1,8 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets\ZingSword\Scriptings\treeColliderScript.js">
     <Files>
-      <File FileName="Assets\ZingSword\Scriptings\treeColliderScript.cs" Line="1" Column="1" />
-      <File FileName="Assets\ZingSword\Scriptings\treeColliderScript.js" Line="1" Column="1" />
+      <File FileName="Assets\ZingSword\Scriptings\treeColliderScript.js" Line="46" Column="24" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
