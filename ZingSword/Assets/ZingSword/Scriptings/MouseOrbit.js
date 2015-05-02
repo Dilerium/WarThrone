@@ -1,10 +1,10 @@
 var target : Transform;
-var distance = 10.0;
+var distance = 5;
 
 var xSpeed = 250.0;
 var ySpeed = 120.0;
 
-var yMinLimit = -20;
+var yMinLimit = -40;
 var yMaxLimit = 80;
 
 private var x = 0.0;
@@ -30,17 +30,26 @@ function LateUpdate () {
  		y = ClampAngle(y, yMinLimit, yMaxLimit);
  		       
         var rotation = Quaternion.Euler(y, x, 0);
-        var position = rotation * Vector3(0.0, 0.0, -distance) + target.position;
+        var position = rotation * Vector3(0, 2, -distance) + target.position;
         
         transform.rotation = rotation;
         transform.position = position;
     }
 }
 
-static function ClampAngle (angle : float, min : float, max : float) {
-	if (angle < -360)
-		angle += 360;
-	if (angle > 360)
-		angle -= 360;
+function ClampAngle (angle : float, min : float, max : float) {
+	if (angle < min){
+		angle = 0;
+		distance = 5;
+	}
+	if(angle < (min + 50)){
+		distance = 1;
+	}
+	if(angle > (min + 49)){
+		distance = 5;
+	}
+	if (angle > max){
+		angle = max;
+	}
 	return Mathf.Clamp (angle, min, max);
 }

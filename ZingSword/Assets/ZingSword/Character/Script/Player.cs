@@ -293,7 +293,7 @@ public class Player : MonoBehaviour
 	{
 		int dealtDamage = (damage - armour);
 		this.currHealth -= (dealtDamage > 0) ? dealtDamage : 1;
-        this.HealthBar.size = health / 100f;
+        //this.HealthBar.size = health / 100f;
 		if(this.currHealth <= 0) {  this.dying = true; }
 		Debug.Log ("Player : " + this.currHealth);
 	}

@@ -17,7 +17,6 @@ public class Mob : MonoBehaviour
 	private int health;
 	private int strength;
 	private int defense;
-	private int despawnTime;
 	private bool dying = false;
 	private bool dead = false;
 
@@ -82,12 +81,7 @@ public class Mob : MonoBehaviour
 		}
 		else if (dead)
 		{
-			despawnTime ++;
-			if(despawnTime > 1500)
-			{
-				despawnTime = 0;
-				terrain.GetComponent<EnemySpawn>().removeEnemy(this.id);
-			}
+
 		}
 	}
 
