@@ -40,8 +40,8 @@ public class Mob : MonoBehaviour
 	void Start () 
 	{
 		this.health = (player.getLevel () > 1) ? ((int) 100 * (player.getLevel ()/2)) : 50;
-		this.strength = (player.getLevel () > 1) ? ((int) 5 * (player.getLevel () /2)) : 5;
-		this.defense = (player.getLevel () > 1) ? ((int) 3 * (player.getLevel () /2)) : 3;
+		this.strength = (player.getLevel () > 1) ? ((int) 7 * (player.getLevel () /2)) : 5;
+		this.defense = (player.getLevel () > 1) ? ((int) 4 * (player.getLevel () /2)) : 3;
 	}
 	
 	// Update is called once per frame
