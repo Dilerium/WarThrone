@@ -1,8 +1,8 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Release" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="..\..\..\..\..\3rdPersonTutorial\Assets\CameraScripts\SmoothLookAt.js">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Release" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\DayNightCycle\TOD\TOD.js">
     <Files>
-      <File FileName="..\..\..\..\..\3rdPersonTutorial\Assets\CameraScripts\SmoothLookAt.js" Line="1" Column="1" />
+      <File FileName="Assets\DayNightCycle\TOD\TOD.js" Line="52" Column="66" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
