@@ -115,27 +115,27 @@ public class GuiGenerator : MonoBehaviour
 				GameObject.FindGameObjectWithTag ("addDef").GetComponent<Button>().enabled = false;
 			}
 			currStrength.text = char1.getStrength ().ToString ();
-			if(char1.getStrength() < 1)
+			if(Int32.Parse(char1.tempStr.text) < 1)
 			{
 				GameObject.FindGameObjectWithTag("lowerStr").GetComponent<Button>().enabled = false;
 			}
 			currSpeed.text = char1.getSpeed().ToString ();
-			if(char1.getSpeed() < 1)
+			if(Int32.Parse(char1.tempSpd.text) < 1)
 			{
 				GameObject.FindGameObjectWithTag("lowerSpd").GetComponent<Button>().enabled = false;
 			}
 			currHealth.text = char1.getHealth().ToString ();
-			if(char1.getHealth () < 1)
+			if(Int32.Parse(char1.tempHealth.text) < 1)
 			{
 				GameObject.FindGameObjectWithTag("lowerHealth").GetComponent<Button>().enabled = false;
 			}
 			currStamina.text = char1.getStamina().ToString ();
-			if(char1.getStamina() < 1)
+			if(Int32.Parse(char1.tempStam.text) < 1)
 			{
 				GameObject.FindGameObjectWithTag("lowerStam").GetComponent<Button>().enabled = false;
 			}
 			currDefence.text = char1.getDefence().ToString ();
-			if(char1.getDefence() < 1)
+			if(Int32.Parse(char1.tempDef.text) < 1)
 			{
 				GameObject.FindGameObjectWithTag("lowerDef").GetComponent<Button>().enabled = false;
 			}
@@ -154,13 +154,13 @@ public class GuiGenerator : MonoBehaviour
 
 	private void DisplayName()
 	{
-		GUI.Label (new Rect(10,10, 50,25), "Name");
-		GUI.TextArea (new Rect (65, 10, 100, 25), char1.getName ());
+		//GUI.Label (new Rect(10,10, 50,25), "Name");
+		//GUI.TextArea (new Rect (65, 10, 100, 25), char1.getName ());
 	}
 
 	private void DisplayAttribute()
 	{
-		for(int i=0; i < char1.getAttributes().Length; i++){
+		/*for(int i=0; i < char1.getAttributes().Length; i++){
 			GUI.Label(new Rect(10, 40 + (i* 25), 100, 25), char1.getAttributes ().GetValue (i).ToString ());
 			Button newButton = UnityEngine.Resources.Load<Button>("UnityEngine/UI/Button");
 			//newButton.guiText.text = "+";
@@ -168,11 +168,11 @@ public class GuiGenerator : MonoBehaviour
 			Button newButton2 = UnityEngine.Resources.Load<Button>("UnityEngine/UI/Button");
 			//newButton2.guiText.text = "-";
 			newButton2.onClick.AddListener (delegate{char1.increaseStat(-1, char1.getAttributes ().GetValue (i).ToString ());});
-		}
+		}*/
 	}
 
 	private void DisplayPointsLeft()
 	{
-		GUI.Label (new Rect(250,10, 100,25), "Points left : " + char1.getStats());
+		//GUI.Label (new Rect(250,10, 100,25), "Points left : " + char1.getStats());
 	}
 }

@@ -8,17 +8,22 @@ public class Player : MonoBehaviour
 	public AnimationClip die;
 	public bool dying = false;
 	public bool dead = false;
+	public Text tempStr;
+	public Text tempSpd;
+	public Text tempHealth;
+	public Text tempStam;
+	public Text tempDef;
 
 	private string charName;
 	private string primaryAttribute;
-	private int strength;
-	private int speed;
-    //healt defs
+	//healt defs
 	private int health;
-    public Scrollbar HealthBar;
+	public Scrollbar HealthBar;
 	private int currHealth;
 	private int maxHealth;
-    //end of health defs
+	//end of health defs
+	private int strength;
+	private int speed;
 	private int stamina;
 	private int defence;
 	private int level; 
@@ -77,11 +82,15 @@ public class Player : MonoBehaviour
 
 	public void initialize()
 	{
-		this.setHealth (5);
-		this.setStrength (5);
-		this.setDefence (5);
-		this.setSpeed (5);
-		this.setStamina (5);
+		this.health = 5;
+		this.maxHealth = (this.health * 8);
+		this.currHealth = this.maxHealth;
+		this.strength = 5;
+		this.attack = (this.strength * 4);
+		this.defence = 5;
+		this.armour = (this.strength * 3);
+		this.speed = 5;
+		this.stamina = 5;
 		this.statPoints = 0;
 		this.level = 1;
 	}
@@ -122,6 +131,25 @@ public class Player : MonoBehaviour
 		this.exp = exp;
 		this.attack = (strength * 4);
 		this.armour = (int) (defence * 3);
+	}
+
+	public void increaseStatistics()
+	{
+		this.strength += Int32.Parse (tempStr.text);
+		this.attack = (this.strength * 4);
+		this.speed += Int32.Parse (tempSpd.text);
+		this.health += Int32.Parse (tempHealth.text);
+		this.maxHealth = (this.health * 8);
+		this.currHealth = this.maxHealth;
+		this.stamina += Int32.Parse (tempStam.text);
+		this.defence += Int32.Parse (tempDef.text);
+		this.armour = (this.defence * 3);
+		tempStr.text = "0";
+		tempSpd.text = "0";
+		tempHealth.text = "0";
+		tempStam.text = "0";
+		tempDef.text = "0";
+		this.attack = (strength * 4);
 	}
 
 	public void setPrimaryAttribute(string primaryAttribute)
@@ -173,8 +201,9 @@ public class Player : MonoBehaviour
 
 	public void setStrength(int gain)
 	{
-		this.strength += gain;
-		this.attack = (strength * 4);
+		int tempStrength = Int32.Parse (tempStr.text);
+		tempStrength += gain;
+		tempStr.text = tempStrength.ToString ();
 		this.statPoints -= gain;
 	}
 
@@ -195,7 +224,9 @@ public class Player : MonoBehaviour
 
 	public void setSpeed(int gain)
 	{
-		this.speed += gain;
+		int tempSpeed = Int32.Parse (tempSpd.text);
+		tempSpeed += gain;
+		tempSpd.text = tempSpeed.ToString ();
 		this.statPoints -= gain;
 	}
 
@@ -206,9 +237,9 @@ public class Player : MonoBehaviour
 
 	public void setHealth(int gain)
 	{
-		this.health += gain;
-		this.maxHealth = (health * 8);
-		this.currHealth = this.maxHealth;
+		int tempHth = Int32.Parse (tempHealth.text);
+		tempHth += gain;
+		tempHealth.text = tempHth.ToString ();
 		this.statPoints -= gain;
 	}
 
@@ -229,8 +260,9 @@ public class Player : MonoBehaviour
 
 	public void setDefence(int gain)
 	{
-		this.defence += gain;
-		this.armour = (int)(defence * 1.5);
+		int tempDefence = Int32.Parse (tempDef.text);
+		tempDefence += gain;
+		tempDef.text = tempDefence.ToString ();
 		this.statPoints -= gain;
 	}
 
@@ -251,7 +283,9 @@ public class Player : MonoBehaviour
 
 	public void setStamina(int gain)
 	{
-		this.stamina += gain;
+		int tempStamina = Int32.Parse (tempStam.text);
+		tempStamina += gain;
+		tempStam.text = tempStamina.ToString ();
 		this.statPoints -= gain;
 	}
 
