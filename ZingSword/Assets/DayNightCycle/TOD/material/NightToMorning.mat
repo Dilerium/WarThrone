@@ -101,12 +101,12 @@ Material:
       data:
         first:
           name: _Blend
-        second: .931296825
+        second: 0
     m_Colors:
       data:
         first:
           name: _Tint
-        second: {r: .757369101, g: .757369101, b: .757369101, a: 0}
+        second: {r: .492307663, g: .492307663, b: .492307663, a: 0}
 --- !u!1002 &2100001
 EditorExtensionImpl:
   serializedVersion: 6
