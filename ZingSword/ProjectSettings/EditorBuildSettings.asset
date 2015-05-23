@@ -9,3 +9,5 @@ EditorBuildSettings:
     path: Assets/ZingSword/MainMenu.unity
   - enabled: 1
     path: Assets/ZingSword/ZingSword.unity
+  - enabled: 1
+    path: Assets/ZingSword/Story&Credits.unity
