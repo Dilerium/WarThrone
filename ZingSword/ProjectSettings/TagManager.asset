@@ -16,7 +16,7 @@ TagManager:
   - addDef
   - lowerDef
   - UserWindows
-  - 
+  - SettingPanel
   - UI
   - 
   - ItemDatabase
