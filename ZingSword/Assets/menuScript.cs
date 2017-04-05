@@ -44,9 +44,13 @@ public class menuScript : MonoBehaviour {
 	{
 		Application.LoadLevel (1);
 	}
-	public void StartCredits()
+	public void StartSettings()
 	{
 		Application.LoadLevel (2);
+	}
+	public void StartCredits()
+	{
+		Application.LoadLevel (3);
 	}
 	public void ExitGame()
 	{
